@@ -1,0 +1,79 @@
+.toast {
+  box-sizing: border-box;
+  padding: .75rem;
+  background-color: white;
+  border: 1px solid #333;
+  border-radius: .25em;
+  position: relative;
+  cursor: pointer;
+  transition: transform 300ms ease-in-out;
+  overflow: hidden;
+}
+
+.toast-container[data-position$="-right"] .toast {
+  transform: translateX(110%);
+}
+
+.toast-container[data-position$="-left"] .toast {
+  transform: translateX(-110%);
+}
+
+.toast-container[data-position="top-center"] .toast {
+  transform: translateY(-100vh);
+}
+
+.toast-container[data-position="bottom-center"] .toast {
+  transform: translateY(100vh);
+}
+
+.toast-container .toast.show {
+  transform: translate(0, 0);
+}
+
+.toast.progress::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: calc(100% * var(--progress));
+  background-color: blue;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.toast.can-close::after {
+  content: "\00D7";
+  position: absolute;
+  top: 2px;
+  right: 5px;
+}
+
+.toast-container {
+  position: fixed;
+  margin: 10px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.toast-container[data-position^="top-"] {
+  top: 0;
+}
+
+.toast-container[data-position^="bottom-"] {
+  bottom: 0;
+}
+
+.toast-container[data-position$="-right"] {
+  right: 0;
+}
+
+.toast-container[data-position$="-left"] {
+  left: 0;
+}
+
+.toast-container[data-position$="-center"] {
+  left: 50%;
+  transform: translateX(-50%);
+}
